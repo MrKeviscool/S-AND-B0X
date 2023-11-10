@@ -1,6 +1,9 @@
 # S-AND-B0X
 a shitty sand sim
 
+INSTALLS:
+make sure sfml is installed in the default location
+
 S&ND B0X README:
 
 How to use custom map support:
