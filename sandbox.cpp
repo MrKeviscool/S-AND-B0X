@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 #include <SFML/Graphics.hpp>
 const int clearlines = 10;
 int map[] = {0};
