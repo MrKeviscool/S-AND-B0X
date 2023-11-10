@@ -18,6 +18,7 @@ int main(){
     std::cin >> timesmapby;
     srand(clock());
     loadmap();
+    //testingmap();
     sf::RenderWindow window(sf::VideoMode(width*timesmapby, height*timesmapby), "S&ND B0X", sf::Style::Close);
     while (window.isOpen())
     {
@@ -136,14 +137,27 @@ void logic(){
 }
 
 void testingmap(){
+   // width = height = 100;
+   width = 25;
+   height = 25;
     for(int i = 0; i < (width*height); i++){
         map[i] = 0;
     }
-    map[((width*height) /2) + (width/2)] = 7;
-    map[((width*height) /2) + 1 + (width/2)] = 7;
-    map[((width*height) /2) - 1 + (width/2)] = 7;
-    map[(width/2)] = 8;
-    //map[(width + (width/2))] = 7;
+    for(int i = width*((height/4)*3); i < width*((height/4)*3) + (width/2) - 5; i++){
+        map[i] = 7;
+    }
+    for(int i = width*((height/4)*3)+width/2 + 6; i < width*((height/4)*3) + width; i++){
+        map[i] = 7;
+    }
+    for(int i = width*height - width; i < width*height; i++){
+        map[i] = 7;
+    }
+    for(int i = width/2-1; i < width/2+1; i++){
+        map[i] = 8;
+    }
+    for(int i = width*(height/2)+width/4+1; i < width*(height/2)+width/2+width/4; i++){
+        map[i] = 7;
+    }
 }
 
 void delay()
@@ -154,12 +168,20 @@ void delay()
     return;
 }
 
-int loadmap(){
-   FILE *mapfile;
-   if(fopen("map.txt", "r") == NULL){return 1;}
-   mapfile = fopen("./map.txt", "r");
-   for (int i = 0; i < (width*height); i++){
-      fscanf(mapfile, "%d,", &map[i]);
-   }
-   return 0;
+int loadmap()
+{
+    FILE *mapfile;
+    if (fopen("map.txt", "r") == NULL)
+    {
+        std::cout << "\nmap.txt not found... defaulting to big test map";
+        testingmap();
+        //std::cout << "map.txt not found. exiting...";
+        exit(1);
+    }
+    mapfile = fopen("./map.txt", "r");
+    for (int i = 0; i < (width * height); i++)
+    {
+        fscanf(mapfile, "%d,", &map[i]);
+    }
+    return 0;
 }
