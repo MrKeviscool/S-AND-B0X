@@ -7,16 +7,18 @@ float delaysecs = 1;
 void display(sf::RenderWindow& window), consoledisplay(), logic(), testingmap(), delay();
 int loadmap();
 int main(){
-    std::cout << "S&ND B0X++  -By Daniel S";
-    std::cout << "\nmap height: ";
-    std::cin >> height;
+    std::cout << "S&ND B0X++  -By Daniel S\n";
     std::cout << "map width: ";
     std::cin >> width;
+    std::cout << "map height: ";
+    std::cin >> height;
     std::cout << "delay (seconds): ";
     std::cin >> delaysecs;
+    std::cout << "window size (pixels*width/height): ";
+    std::cin >> timesmapby;
     srand(clock());
     loadmap();
-    sf::RenderWindow window(sf::VideoMode(width*timesmapby, height*timesmapby), "S&ND B0X");
+    sf::RenderWindow window(sf::VideoMode(width*timesmapby, height*timesmapby), "S&ND B0X", sf::Style::Close);
     while (window.isOpen())
     {
         sf::Event event;
