@@ -96,9 +96,12 @@ for (int i = (width * height); i > 0; i--){
         int x = i % width;
         int y = i / width;
         
-        if (map[i] == 8 ){
+        if (map[i] == 8 || map[i] == 5){
             if (y < height - 1 && map[i + width] == 0){
                 map[i + width] = 5;
+                if(map[i] == 5){
+                    map[i] = 0;
+                }
             }
             else if (y < height - 1 && x > 0 && x < width - 1 && map[i + width - 1] == 0 && map[i + width + 1] == 0){
                 if (rndnum == 0){
@@ -107,35 +110,21 @@ for (int i = (width * height); i > 0; i--){
                 else {
                     map[i + width + 1] = 5;
                 }
+                if(map[i] == 5){
+                    map[i] = 0;
+                }
             }
             else if (y < height - 1 && x > 0 && map[i + width - 1] == 0){
                 map[i + width - 1] = 5;
+                if(map[i] == 5){
+                    map[i] = 0;
+                }
             }
             else if (y < height - 1 && x < width - 1 && map[i + width + 1] == 0){
                 map[i + width + 1] = 5;
-            }
-        }
-        else if (map[i] == 5){ //could probb remove this bit because it repeats alot of code but not rn
-            if (y < height - 1 && map[i + width] == 0){
-                map[i + width] = 5;
-                map[i] = 0;
-            }
-            else if (y < height - 1 && x > 0 && x < width - 1 && map[i + width - 1] == 0 && map[i + width + 1] == 0){
-                if (rndnum == 0){
-                    map[i + width - 1] = 5;
+                if(map[i] == 5){
+                    map[i] = 0;
                 }
-                else{
-                    map[i + width + 1] = 5;
-                }
-                map[i] = 0;
-            }
-            else if (y < height - 1 && x > 0 && map[i + width - 1] == 0){
-                map[i + width - 1] = 5;
-                map[i] = 0;
-            }
-            else if (y < height - 1 && x < width - 1 && map[i + width + 1] == 0){
-                map[i + width + 1] = 5;
-                map[i] = 0;
             }
         }
     }
