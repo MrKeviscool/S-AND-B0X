@@ -88,11 +88,8 @@ void consoledisplay(){ //consoledisplays to console
 }
 
 void logic(){
-    // int p = (width*height);
-    int rndnum = rand() % 2;
-    // std::cout << "randnum: " << rndnum << "\n";
-    
-for (int i = (width * height); i > 0; i--){
+    int rndnum = rand() % 2
+for (int i = (width * height); i > -1; i--){
         int x = i % width;
         int y = i / width;
         
