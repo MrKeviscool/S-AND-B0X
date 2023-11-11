@@ -1,8 +1,9 @@
 # S-AND-B0X
 a shitty sand sim
 
-INSTALLS:
-make sure sfml is installed in the default location
+SETUP:
+make sure sfml is installed in the default location and then run compile.sh
+not tested on Windows but it should work
 
 S&ND B0X README:
 
