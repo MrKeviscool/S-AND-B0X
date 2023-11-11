@@ -30,14 +30,14 @@ int main(){
                 return 0;
             }
         }
-        ////////////GAME LOOP////////////////
+        ////////////SIM LOOP////////////////
         logic();
         consoledisplay();
         display(window);
         delay();
 
 
-        ////////////END GAME LOOP////////////
+        ////////////END SIM LOOP////////////
     }
     return 0;
 }
