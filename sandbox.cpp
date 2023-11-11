@@ -32,6 +32,7 @@ int main(){
         }
         ////////////GAME LOOP////////////////
         logic();
+        consoledisplay();
         display(window);
         delay();
 
@@ -87,57 +88,61 @@ void consoledisplay(){ //consoledisplays to console
 }
 
 void logic(){
-    //int p = (width*height);
+    // int p = (width*height);
     int rndnum = rand() % 2;
-    //std::cout << "randnum: " << rndnum << "\n";
-    for(int i = (width*height); i > 0; i--){
-        if(map[i] == 8){
-            if(map[(i+width)] == 0){
-                map[(i+width)] = 5;
+    // std::cout << "randnum: " << rndnum << "\n";
+    
+for (int i = (width * height); i > 0; i--){
+        int x = i % width;
+        int y = i / width;
+        
+        if (map[i] == 8 ){
+            if (y < height - 1 && map[i + width] == 0){
+                map[i + width] = 5;
             }
-            else if(map[(i+width-1)]==0 && map[(i+width+1)]==0){
-                if(rndnum == 0){
-                    map[(i+width-1)] = 5;
+            else if (y < height - 1 && x > 0 && x < width - 1 && map[i + width - 1] == 0 && map[i + width + 1] == 0){
+                if (rndnum == 0){
+                    map[i + width - 1] = 5;
                 }
-                else{
-                    map[(i+width+1)] =5;
+                else {
+                    map[i + width + 1] = 5;
                 }
             }
-            else if(map[(i+width-1)]==0){
-                map[(i+width-1)] = 5;
+            else if (y < height - 1 && x > 0 && map[i + width - 1] == 0){
+                map[i + width - 1] = 5;
             }
-            else if(map[(i+width+1)] == 0){
-                map[(i+width+1)] = 5;
+            else if (y < height - 1 && x < width - 1 && map[i + width + 1] == 0){
+                map[i + width + 1] = 5;
             }
         }
-        else if(map[i] == 5){
-            if(map[(i+width)] == 0){
-                map[(i+width)] = 5;
+        else if (map[i] == 5){ //could probb remove this bit because it repeats alot of code but not rn
+            if (y < height - 1 && map[i + width] == 0){
+                map[i + width] = 5;
                 map[i] = 0;
             }
-            else if(map[(i+width-1)]==0 && map[(i+width+1)]==0){
-                if(rndnum == 0){
-                    map[(i+width-1)] = 5;
+            else if (y < height - 1 && x > 0 && x < width - 1 && map[i + width - 1] == 0 && map[i + width + 1] == 0){
+                if (rndnum == 0){
+                    map[i + width - 1] = 5;
                 }
                 else{
-                    map[(i+width+1)] =5;
+                    map[i + width + 1] = 5;
                 }
                 map[i] = 0;
             }
-            else if(map[(i+width-1)]==0){
-                map[(i+width-1)] = 5;
+            else if (y < height - 1 && x > 0 && map[i + width - 1] == 0){
+                map[i + width - 1] = 5;
                 map[i] = 0;
             }
-            else if(map[(i+width+1)] == 0){
-                map[(i+width+1)] = 5;
+            else if (y < height - 1 && x < width - 1 && map[i + width + 1] == 0){
+                map[i + width + 1] = 5;
                 map[i] = 0;
             }
         }
     }
 }
 
+
 void testingmap(){
-   // width = height = 100;
    width = 25;
    height = 25;
     for(int i = 0; i < (width*height); i++){
@@ -152,11 +157,11 @@ void testingmap(){
     for(int i = width*height - width; i < width*height; i++){
         map[i] = 7;
     }
-    for(int i = width/2-1; i < width/2+1; i++){
-        map[i] = 8;
-    }
     for(int i = width*(height/2)+width/4+1; i < width*(height/2)+width/2+width/4; i++){
         map[i] = 7;
+    }
+    for(int i = width/2-1; i < width/2+1; i++){
+        map[i] = 8;
     }
 }
 
