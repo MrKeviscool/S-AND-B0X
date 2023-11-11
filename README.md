@@ -4,8 +4,6 @@ a shitty sand sim
 INSTALLS:
 make sure sfml is installed in the default location
 
-BUGS:
-SAND CAN GO THROUGH FLOOR AT SIDES OF MAP
 S&ND B0X README:
 
 How to use custom map support:
