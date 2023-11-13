@@ -14,7 +14,7 @@ int main(){
     std::cin >> height;
     std::cout << "delay (seconds): ";
     std::cin >> delaysecs;
-    std::cout << "window size (pixels*width/height): ";
+    std::cout << "window size (pixels per square): ";
     std::cin >> timesmapby;
     srand(clock());
     loadmap();
@@ -48,10 +48,7 @@ void display(sf::RenderWindow& window){
     window.clear(sf::Color::Black);
     for(int y = 0; y< height; y++){
         for(int x = 0; x < width; x++){
-                       // std::cout << p;
-            //std::cout << map[p];
             if(map[p] != 0){
-                //std::cout << p;
                 sf::RectangleShape square(sf::Vector2f(timesmapby, timesmapby));
                 if(map[p] == 7){
                     square.setFillColor(sf::Color(255, 255, 255));
@@ -88,19 +85,22 @@ void consoledisplay(){ //consoledisplays to console
 }
 
 void logic(){
-    int rndnum = rand() % 2
-for (int i = (width * height); i > -1; i--){
+    // int p = (width*height);
+    int rndnum = rand() % 2;
+    // std::cout << "randnum: " << rndnum << "\n";
+    
+for (int i = (width * height); i > -1   ; i--){
         int x = i % width;
         int y = i / width;
         
         if (map[i] == 8 || map[i] == 5){
-            if (y < height - 1 && map[i + width] == 0){
+            if (map[i + width] == 0){
                 map[i + width] = 5;
                 if(map[i] == 5){
                     map[i] = 0;
                 }
             }
-            else if (y < height - 1 && x > 0 && x < width - 1 && map[i + width - 1] == 0 && map[i + width + 1] == 0){
+            else if (y < height - 1 && x > 0 && x < width - 1 && map[i + width - 1] == 0 && map[i + width + 1] == 0 && map[i+width] == 5){
                 if (rndnum == 0){
                     map[i + width - 1] = 5;
                 }
@@ -111,13 +111,13 @@ for (int i = (width * height); i > -1; i--){
                     map[i] = 0;
                 }
             }
-            else if (y < height - 1 && x > 0 && map[i + width - 1] == 0){
+            else if (y < height - 1 && x > 0 && map[i + width - 1] == 0 && map[i+width] == 5){
                 map[i + width - 1] = 5;
                 if(map[i] == 5){
                     map[i] = 0;
                 }
             }
-            else if (y < height - 1 && x < width - 1 && map[i + width + 1] == 0){
+            else if (y < height - 1 && x < width - 1 && map[i + width + 1] == 0 && map[i+width] == 5){
                 map[i + width + 1] = 5;
                 if(map[i] == 5){
                     map[i] = 0;
@@ -126,7 +126,6 @@ for (int i = (width * height); i > -1; i--){
         }
     }
 }
-
 
 void testingmap(){
    width = 25;
