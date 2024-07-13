@@ -34,7 +34,3 @@ Delay:
 
 the delay is how long between each sim update (frame). You can set this as low as you want but it may become unstable at extremely low time per frame
 
-
-Bugs:
-
-If you find any bugs or have an idea, please mail me at: danielandkev@outlook.com
